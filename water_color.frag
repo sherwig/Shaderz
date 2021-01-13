@@ -27,7 +27,7 @@ const int amount=18;
 //
 // }
 
-
+//Water Color 2
 void main(){
 
   vec2 coord = 20.0*(gl_FragCoord.xy-u_resolution/2.0)/min(u_resolution.y,u_resolution.x);
