@@ -38,11 +38,11 @@ void main(){
   {
     len = length(vec2(coord.x,coord.y));
     coord.x=coord.x-cos(coord.y+sin(len))+cos(u_time/9.0);
-    coord.y=coord.y+sin(coord.x+cos(len))+sin(u_time/4.0);
+    coord.y=coord.y+sin(coord.x+cos(len))+cos(u_time/4.0);
     // coord.y=coord.y+sin(coord.x+sin(len))+sin(u_time/24.0);
 
   }
 
-  gl_FragColor =vec4(cos(len*1.0),cos(len*1.0),cos(len*4.0)+cos(u_time/9.0)*0.1,1.0);
+  gl_FragColor =vec4(cos(len*4.0),cos(len*2.0),cos(len*3.0)+cos(u_time/9.0)*0.1,1.0);
 
 }
