@@ -58,9 +58,23 @@ void main(){
    position-= vec2(0.5);
    position= rotate(sin(u_time)/2.0)*position;
    position+= vec2(0.5);
-   color+=vec3(rectShape(position,vec2(sin(u_time/2.0)/2.0+.3,cos(u_time/2.0)/3.0+.3)));
 
-   color+=vec3(polygonShape(position,abs(sin(u_time/2.0)/2.0+.1),abs(cos(u_time/4.0)*32.0)));
+   for(int i=0; i<5; i++)
+   {
+     float n= float(i);
+     if(n/2.0==0.0)
+     {
+       color+=vec3(rectShape(position,vec2(abs(sin(u_time/2.0))/2.0+.3,cos(u_time/2.0)/3.0+.3)));
+
+     }
+     else{
+       color+=vec3(rectShape(position,vec2(abs(cos(u_time/2.0))/2.0+.3,sin(u_time/2.0)/3.0+.3)));
+       color+=vec3(circleShape(position,abs(sin(u_time/2.0))/2.0+.3));
+     }
+
+     // color+=vec3(polygonShape(position,abs(sin(u_time/2.0)/2.0+.1),abs(cos(u_time/4.0)*32.0)));
+
+   }
 
   // color=vec3(circleShape(position,sin(u_time/2.0)/2.0+.3));
   // color=vec3(rectShape(position,vec2(sin(u_time/2.0)/2.0+.3,cos(u_time/2.0)+.3)));
