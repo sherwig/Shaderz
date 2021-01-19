@@ -25,12 +25,9 @@ uniform vec2 u_mouse;
 //
 // }
 
-
 //Random Grid
 float random2d(vec2 coord){
-
   return fract(sin(dot(coord.xy,vec2(12.9898,78.233)))*43578.5453);
-
 }
 
 
