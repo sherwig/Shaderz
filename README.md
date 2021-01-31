@@ -1,5 +1,4 @@
 # Shader Readme 
-===============
 ## This is my first wrriten process update for my masters thesis. 
 ### I will be creating a Paritcle system in THREE.js for my final project. 
 
