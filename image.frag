@@ -9,6 +9,11 @@ uniform float u_time;
 uniform vec2 u_mouse;
 
 uniform sampler2D u_tex0; //HalfDome.jpg
+float size = 6.0;
+float speed= -10.0;
+bool flip = false;
+
+float amount=0.6;
 
 // void main(){
 //   vec2 coord =gl_FragCoord.xy/u_resolution;
@@ -53,13 +58,57 @@ uniform sampler2D u_tex0; //HalfDome.jpg
 
 
 //Load image with mix
+// void main(){
+//   vec2 coord =gl_FragCoord.xy/u_resolution;
+//   vec3 color = vec3(0.0);
+//   vec4 image=texture2D(u_tex0,coord);
+//
+//   color = mix(color, image.rgb, image.a);
+//
+//   gl_FragColor =vec4(image);
+//
+// }
+
+
+//Scan Image
+
+// void main(){
+//   vec2 coord =gl_FragCoord.xy/u_resolution;
+//   vec3 color = vec3(0.0);
+//   vec4 image=texture2D(u_tex0,coord);
+//   if (flip){
+//     image.a = sin(floor(coord.x*size)-u_time*speed);
+//   }
+//   else{
+//     image.a = sin(floor(coord.y*size)-u_time*speed);
+//   }
+//
+//   gl_FragColor =image;
+//
+// }
+
+
+//Random Grid
+float random2d(vec2 coord){
+  return fract(sin(dot(coord.xy,vec2(12.9898,78.233)))*43578.5453);
+}
+
+
+float noise1d(float value){
+  return cos(value+cos(value*90.0)*100.0)*0.5+0.5;
+}
+
+// Noise image
 void main(){
   vec2 coord =gl_FragCoord.xy/u_resolution;
   vec3 color = vec3(0.0);
   vec4 image=texture2D(u_tex0,coord);
 
-  color = mix(color, image.rgb, image.a);
+  float noise= (random2d(coord)-0.5)*amount;
+  image.r+=noise;
+  image.b+=noise;
+  image.g+=noise1d(u_time*3.0);
 
-  gl_FragColor =vec4(image);
+  gl_FragColor =image;
 
 }
